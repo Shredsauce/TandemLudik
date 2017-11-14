@@ -26,6 +26,7 @@ public class Curved : MonoBehaviour {
 	private void SetCurvature () {
 		for (int i = 0; i < materials.Count; i++) {
 			materials[i].SetFloat("_Curvature", GameControl.Instance.curvature);
+			materials[i].SetFloat("_SideCurvature", GameControl.Instance.sideCurvature);
 		}
 	}
 }

@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameControl : MonoBehaviour {
-
 	public static GameControl Instance;
-
-	public GameObject obstaclePrefab;
-
-	public float curvature = 0.001f;
-
-	[Range(0f, 1f)] public float curveAmount = 0f;
-	public float minCurvature = 0.0001f;
-	public float maxCurvature = 0.03f;
 
 	public static float minDistance = -14f;
 	public static float maxDistance = -10f;
+
+	public GameObject obstaclePrefab;
+
+	[HideInInspector] public float curvature = 0.001f;
+	[HideInInspector] public float sideCurvature = 0.001f;
+
+	[Range(0f, 1f)] public float curveAmount = 0f;
+	[Range(0f, 1f)] public float sideCurveAmount = 0f;
+	public float minCurvature = 0.0001f;
+	public float maxCurvature = 0.03f;
 
 	public Shader curvedShader;
 
@@ -31,6 +32,7 @@ public class GameControl : MonoBehaviour {
 
 	void Update () {
 		curvature = Mathf.Lerp(minCurvature, maxCurvature, curveAmount);
+		sideCurvature = Mathf.Lerp(minCurvature, maxCurvature, sideCurveAmount);
 
 		if (Input.GetKeyDown(KeyCode.O)) {
 			AddObstacle ();

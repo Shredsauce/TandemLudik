@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour {
 	private int lane;
 
 	void Awake () {
-		lane = UnityEngine.Random.Range(0, 5);
+		lane = UnityEngine.Random.Range(0, 6);
 
 		transform.position = new Vector3(
 			lane - 3f,

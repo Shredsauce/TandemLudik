@@ -7,6 +7,7 @@ Shader "Custom/CurvedWorld" {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         // Degree of curvature
         _Curvature ("Curvature", Float) = 0.001
+        _SideCurvature ("Side curvature", Float) = 0.001
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
@@ -20,6 +21,7 @@ Shader "Custom/CurvedWorld" {
         // Access the shaderlab properties
         uniform sampler2D _MainTex;
         uniform float _Curvature;
+        uniform float _SideCurvature;
  
         // Basic input structure to the shader function
         // requires only a single set of UV texture mapping coordinates
@@ -39,7 +41,7 @@ Shader "Custom/CurvedWorld" {
             // Reduce the y coordinate (i.e. lower the "height") of each vertex based
             // on the square of the distance from the camera in the z axis, multiplied
             // by the chosen curvature factor
-            vv = float4( 0.0f, (vv.z * vv.z) * - _Curvature, 0.0f, 0.0f );
+            vv = float4( 0.0f, (vv.z * vv.z) * - _Curvature + (vv.x * vv.x) * - _SideCurvature, 0.0f, 0.0f );
 
             // Now apply the offset back to the vertices in model space
             v.vertex += mul(unity_WorldToObject, vv);
