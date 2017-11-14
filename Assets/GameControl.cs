@@ -14,7 +14,7 @@ public class GameControl : MonoBehaviour {
 	[HideInInspector] public float sideCurvature = 0.001f;
 
 	[Range(0f, 1f)] public float curveAmount = 0f;
-	[Range(0f, 1f)] public float sideCurveAmount = 0f;
+	[Range(-1f, 1f)] public float sideCurveAmount = 0f;
 	public float minCurvature = 0.0001f;
 	public float maxCurvature = 0.03f;
 
@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour {
 
 	void Update () {
 		curvature = Mathf.Lerp(minCurvature, maxCurvature, curveAmount);
-		sideCurvature = Mathf.Lerp(minCurvature, maxCurvature, sideCurveAmount);
+		sideCurvature = Mathf.Lerp(-maxCurvature, maxCurvature, sideCurveAmount);
 
 		if (Input.GetKeyDown(KeyCode.O)) {
 			AddObstacle ();
