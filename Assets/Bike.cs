@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Bike : MonoBehaviour {
 	public static List<Bike> bikes = new List<Bike>();
 	[HideInInspector] public int bikeId;
