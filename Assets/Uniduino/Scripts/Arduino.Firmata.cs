@@ -77,7 +77,7 @@ namespace Uniduino
 		private const int CAPABILITY_QUERY      = 0x6B; // capabilities query for all pins		
 		private const int CAPABILITY_RESPONSE   = 0x6C; // 		
 		        
-        private SerialPort _serialPort;
+        private SerialPort _serialPort_;
         private int delay;
 
         private int waitForData = 0;
