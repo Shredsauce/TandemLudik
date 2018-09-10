@@ -164,7 +164,6 @@ public class UniduinoTestPanel : MonoBehaviour {
 							
 							style.fontSize +=3;
 							style.fontStyle = FontStyle.Bold;
-							
 							GUILayout.Label("Pin:Value", style, GUILayout.Width(label_column_width));						
 							GUILayout.Label("Output", style, GUILayout.Width(test_column_width));
 							GUILayout.Label("Modes",style, GUILayout.Width(label_column_width)); // these widths hacked due to awful unity bug in label size calculations
@@ -290,11 +289,16 @@ public class UniduinoTestPanel : MonoBehaviour {
 				GUILayout.Label(""); // workaround unity gui silliness 	
 			}
 			GUILayout.EndHorizontal();
-			
 						
-			foreach ( var pc in pin.capabilities)
-			{
-				
+            foreach ( var pc in pin.capabilities)
+            {
+                // MAL
+                //if (pin.number == 2) {
+                //    Debug.Log(pc.mode);
+                //    Debug.Log(pc.Mode);
+                //    Debug.Log(pc.resolution);
+                //}
+
 				if (GUILayout.Button(pc.Mode.ToString(), ui.last_pin_mode==pc.Mode ? green_button : gray_button))
 				{				
 					arduino.pinMode(pin.number, pc.mode);
@@ -353,9 +357,8 @@ public class UniduinoTestPanel : MonoBehaviour {
 		{
 			if (arduino != null)
 			{
-	
+                
 			}
-		
 		}
 		
 	}

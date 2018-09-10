@@ -27,7 +27,9 @@ namespace Uniduino.Examples
 
 		void ConfigurePins ()
 		{
-			arduino.pinMode(pin, PinMode.INPUT);
+            //arduino.pinMode(pin, PinMode.INPUT);
+            arduino.pinMode(pin, 11);
+
 			arduino.reportDigital((byte)(pin/8), 1);
 	        // set the pin mode for the test LED on your board, pin 13 on an Arduino Uno
 			arduino.pinMode(testLed, PinMode.OUTPUT);
