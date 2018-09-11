@@ -292,13 +292,6 @@ public class UniduinoTestPanel : MonoBehaviour {
 						
             foreach ( var pc in pin.capabilities)
             {
-                // MAL
-                //if (pin.number == 2) {
-                //    Debug.Log(pc.mode);
-                //    Debug.Log(pc.Mode);
-                //    Debug.Log(pc.resolution);
-                //}
-
 				if (GUILayout.Button(pc.Mode.ToString(), ui.last_pin_mode==pc.Mode ? green_button : gray_button))
 				{				
 					arduino.pinMode(pin.number, pc.mode);
