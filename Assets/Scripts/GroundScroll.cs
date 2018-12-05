@@ -5,7 +5,6 @@ using System.Collections;
 public class GroundScroll : MonoBehaviour {
 	//scroll main texture based on time
 
-	[SerializeField] private float scrollSpeed = 0.5f;
 	private float offset;
 	private float rotate;
 
@@ -16,8 +15,8 @@ public class GroundScroll : MonoBehaviour {
 	}
 
 	void Update (){
-		offset += (Time.deltaTime*scrollSpeed)/10.0f;
-		rend.material.SetTextureOffset ("_MainTex", new Vector2(0, offset * rend.material.mainTextureScale.y));
-		scrollSpeed = GameControl.Instance.scrollSpeed;
+		offset += GameControl.Instance.scrollSpeed * Time.deltaTime * 0.5f;
+
+        rend.material.SetTextureOffset ("_MainTex", new Vector2(0, offset));
 	}
 }

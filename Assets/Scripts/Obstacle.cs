@@ -16,7 +16,6 @@ public class Obstacle : MonoBehaviour {
 			0f,
 			startDistance
 		);
-
 	}
 
 	void Update () {
