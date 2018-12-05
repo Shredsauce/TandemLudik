@@ -321,8 +321,8 @@ namespace Uniduino
             message[0] = (byte)(DIGITAL_MESSAGE | portNumber);
             message[1] = (byte)(digitalOutputData[portNumber] & 0x7F);
             message[2] = (byte)(digitalOutputData[portNumber] >> 7);
-            _serialPort.Write(message, 0, 3);
-			
+            if (_serialPort.IsOpen)
+                _serialPort.Write(message, 0, 3);
         }
 
         /// <summary>
