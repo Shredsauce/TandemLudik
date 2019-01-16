@@ -6,20 +6,26 @@ public class ScrollingScenery : MonoBehaviour {
 
     [SerializeField] private GameObject buildingPrefab;
 
-    private GameObject building;
+    [SerializeField] private Vector3 position;
+    [SerializeField] private Vector3 rotation;
+    [SerializeField] private float scale = 0.1f;
 
-	
-	void Update () {
+
+    void Update () {
         if (Input.GetKeyDown(KeyCode.L)) {
             Debug.Log("Load building");
 
-            building = Instantiate(buildingPrefab);
-            building.transform.position = new Vector3(2.61f, 0, 2);
-        }
+            GameObject building = Instantiate(buildingPrefab);
+            GameObject container = new GameObject("Building");
+            // Make sure object is destroyed after it's out of view
+            container.AddComponent<Obstacle>();
 
-        //if (building != null) {
-        //    building.transform.Translate(0, 0, GameControl.Instance.scrollSpeed * Time.deltaTime);
-        //}
+            building.transform.rotation = Quaternion.Euler(rotation);
+            building.transform.SetParent(container.transform);
+
+            container.transform.position = position;
+            container.transform.localScale = new Vector3(scale, scale, scale);
+        }
 
     }
 }
