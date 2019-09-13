@@ -24,8 +24,9 @@ public class HallEffect : MonoBehaviour {
     }
 
     void ConfigurePins () {
-        arduino.pinMode(pin, 11);
+        //arduino.pinMode(pin, 11);
         arduino.reportDigital((byte)(pin / 8), 1);
+        arduino.pinMode(pin, PinMode.INPUT);
         // Test LED
         arduino.pinMode(testLed, PinMode.OUTPUT);
     }
@@ -34,6 +35,9 @@ public class HallEffect : MonoBehaviour {
         if (arduino != null) {
             // read the value from the digital input
             pinValue = arduino.digitalRead(pin);
+
+            Debug.Log(string.Format("Pin value on pin {0}: {1}", pin, pinValue));
+
             // apply that value to the test LED
             arduino.digitalWrite(testLed, pinValue);
 
